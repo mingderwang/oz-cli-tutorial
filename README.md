@@ -1,5 +1,7 @@
 # npx oz tutorial
 
+refer to https://docs.openzeppelin.com/cli/2.8/ doc
+
 ## prepare
 
 > install ERC20 and ERC271 token contracts package
