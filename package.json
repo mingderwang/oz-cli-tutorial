@@ -1,5 +1,6 @@
 {
-  "name": "token-factory",
+  "name": "oz-tutorial",
+  "description": "Tutorial for using openzeppelin cli.",
   "version": "1.0.1",
   "main": "index.js",
   "author": "Ming-der Wang",
@@ -7,14 +8,13 @@
   "scripts": {
     "prepare": "yarn link && yarn chain",
     "link": "npx oz link @openzeppelin/contracts-ethereum-package",
-    "chain": "npx ganache-cli --deterministic &",
+    "chain": "npx ganache-cli --deterministic",
+    "deploy": "npx oz deploy",
     "accounts": "npx oz accounts"
   },
-  "dependencies": {
-    "@openzeppelin/cli": "^2.8.2",
-    "@openzeppelin/contracts-ethereum-package": "^3.0.0"
-  },
   "devDependencies": {
+    "@openzeppelin/cli": "^2.8.2",
+    "@openzeppelin/contracts-ethereum-package": "^3.0.0",
     "dotenv": "^16.0.1",
     "truffle-hdwallet-provider": "^1.0.17"
   }
