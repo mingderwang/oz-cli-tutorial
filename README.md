@@ -326,3 +326,106 @@ module.exports = {
   },
 };
 ```
+
+## deploy a new contract
+
+> after you add a new contract to ./contracts folder. you need to run "npx oz deploy" or "yarn deploy" again.
+
+use reference sample contract, TokenExchange.sol, as follows;
+
+```javascript
+// contracts/TokenExchange.sol
+pragma solidity ^0.6.2;
+
+// Import base Initializable contract
+import "@openzeppelin/upgrades/contracts/Initializable.sol";
+
+// Import the IERC20 interface and and SafeMath library
+import "@openzeppelin/contracts-ethereum-package/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts-ethereum-package/contracts/math/SafeMath.sol";
+
+contract TokenExchange is Initializable {
+    using SafeMath for uint256;
+
+    // Contract state: exchange rate and token
+    uint256 public rate;
+    IERC20 public token;
+
+    // Initializer function (replaces constructor)
+    function initialize(uint256 _rate, IERC20 _token) public initializer {
+        rate = _rate;
+        token = _token;
+    }
+
+    // Send tokens back to the sender using predefined exchange rate
+    receive() external payable {
+        uint256 tokens = msg.value.mul(rate);
+        token.transfer(msg.sender, tokens);
+    }
+}
+```
+
+> deploy it
+
+```sh
+➜ yarn deploy
+yarn run v1.22.15
+$ npx oz deploy
+Nothing to compile, all contracts are up to date.
+? Choose the kind of deployment (Use arrow keys)
+? Choose the kind of deployment
+? Choose the kind of deployment upgradeable
+? Pick a network development
+? Pick a contract to deploy TokenExchange
+All implementations are up to date
+? Call a function to initialize the instance after creating it? Yes
+? Select which function initialize(_rate: uint256, _token: address)
+? _rate: uint256: 3
+? _token: address: 0x59d3631c86BbE35EF041872d502F218A39FBa150
+✓ Instance created at 0x0290FB167208Af455bB137780163b7B7a9a10C16
+To upgrade this instance run 'oz upgrade'
+0x0290FB167208Af455bB137780163b7B7a9a10C16
+✨  Done in 14.16s.
+```
+
+> contract read/write demo again
+
+```sh
+➜ yarn read
+yarn run v1.22.15
+$ npx oz call
+? Pick a network development
+? Pick an instance TokenExchange at 0x0290FB167208Af455bB137780163b7B7a
+9a10C16
+? Select which function token()
+✓ Method 'token()' returned: 0x59d3631c86BbE35EF041872d502F218A39FBa150
+0x59d3631c86BbE35EF041872d502F218A39FBa150
+✨  Done in 9.22s.
+➜ yarn read
+yarn run v1.22.15
+$ npx oz call
+? Pick a network development
+? Pick an instance TokenExchange at 0x0290FB167208Af455bB137780163b7B7a
+9a10C16
+? Select which function rate()
+✓ Method 'rate()' returned: 3
+3
+✨  Done in 4.62s.
+➜ yarn write
+yarn run v1.22.15
+$ npx oz send-tx
+? Pick a network development
+? Pick an instance TokenExchange at 0x0290FB167208Af455bB137780163b7B7a
+9a10C16
+? Select which function initialize(_rate: uint256, _token: address)
+? _rate: uint256: 3
+? _token: address: 0x59d3631c86BbE35EF041872d502F218A39FBa150
+✖ Calling: 'initialize' with:
+- _rate (uint256): "3"
+- _token (address): "0x59d3631c86BbE35EF041872d502F218A39FBa150"
+Error while trying to send transaction to 0x0290FB167208Af455bB137780163b7B7a9a10C16. Error: Returned error: VM Exception while processing transaction: revert Contract instance has already been initialized
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+```
+
+> above error is because, each instance can only run initialize function once.
