@@ -4,7 +4,7 @@
   "dependencies": {
     "@openzeppelin/contracts-ethereum-package": "^3.0.0"
   },
-  "name": "token-factory",
+  "name": "oz-tutorial",
   "version": "1.0.1",
   "compiler": {
     "compilerSettings": {

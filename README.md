@@ -2,6 +2,24 @@
 
 ## prepare
 
+> install ERC20 and ERC271 token contracts package
+
+```sh
+➜ npx oz init
+? Welcome to the OpenZeppelin SDK! Choose a name for your project (tutorial)
+? Initial project version 1.0.1
+Project initialized. Write a new contract in the contracts folder and run 'openzeppelin deploy' to deploy it.
+```
+
+> then
+
+```sh
+➜ yarn prepare
+yarn run v1.22.15
+$ npx oz link @openzeppelin/contracts-ethereum-package
+⠦ Installing @openzeppelin/contracts-ethereum-package via npm
+```
+
 ### for localhost
 
 > just to start a local ganache-cli
@@ -139,4 +157,100 @@ All implementations are up to date
 To upgrade this instance run 'oz upgrade'
 0x59d3631c86BbE35EF041872d502F218A39FBa150
 ✨  Done in 46.88s.
+```
+
+> contract read
+
+```sh
+➜  yarn read
+? Pick a network development
+? Pick an instance ERC20PresetMinterPauserUpgradeSafe at 0x59d3631c86Bb
+E35EF041872d502F218A39FBa150
+? Select which function name()
+✓ Method 'name()' returned: MING token
+MING token
+```
+
+> contract write
+
+```sh
+➜ yarn write
+yarn run v1.22.15
+$ npx oz send-tx
+? Pick a network development
+? Pick an instance ERC20PresetMinterPauserUpgradeSafe at 0x59d3631c86Bb
+E35EF041872d502F218A39FBa150
+? Select which function mint(to: address, amount: uint256)
+? to: address: 0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1
+? amount: uint256: 100000000000000000000
+✓ Transaction successful. Transaction hash: 0xff24cce7801e424db6e5a7076d4a9c677ef76df320fe04e2c39e537d09029ec0
+Events emitted:
+ - Transfer(0x0000000000000000000000000000000000000000, 0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1, 100000000000000000000)
+✨  Done in 56.26s.
+
+➜ yarn read
+yarn run v1.22.15
+$ npx oz call
+? Pick a network development
+? Pick an instance ERC20PresetMinterPauserUpgradeSafe at 0x59d3631c86Bb
+E35EF041872d502F218A39FBa150
+? Select which function totalSupply()
+✓ Method 'totalSupply()' returned: 100000000000000000000
+100000000000000000000
+✨  Done in 10.36s.
+```
+
+> get balance
+
+```sh
+➜ yarn balance
+yarn run v1.22.15
+$ npx oz balance
+? Enter an address to query its balance 0x90F8bf6A479f320ead074411a4B0e
+7944Ea8c9C1
+? Pick a network development
+Balance: 99.958583515 ETH
+99958583515000000000
+✨  Done in 18.44s.
+```
+
+> get transfer
+
+```sh
+➜ yarn send
+yarn run v1.22.15
+$ npx oz transfer
+? Pick a network development
+? Choose the account to send transactions from (0) 0x90F8bf6A479f320ead
+074411a4B0e7944Ea8c9C1
+? Enter the receiver account 0xFFcf8FDEE72ac11b5c542428B35EEF5769C409f0
+
+
+? Enter an amount to transfer 10 ether
+✓ Funds sent. Transaction hash: 0x84fa1d7574e646469dd37160eb58811656480595afdd248a18f0927c2921cc95
+✨  Done in 17.59s.
+
+➜ yarn balance
+yarn run v1.22.15
+$ npx oz balance
+? Enter an address to query its balance 0xFFcf8FDEE72ac11b5c542428B35EE
+F5769C409f0
+? Pick a network development
+Balance: 110 ETH
+110000000000000000000
+✨  Done in 5.48s.
+```
+
+> get token balance
+
+```sh
+➜ yarn balance:erc20 0x59d3631c86BbE35EF041872d502F218A39FBa150
+yarn run v1.22.15
+$ npx oz balance --erc20 0x59d3631c86BbE35EF041872d502F218A39FBa150
+? Enter an address to query its balance 0x90F8bf6A479f320ead074411a4B0e
+7944Ea8c9C1
+? Pick a network development
+Balance: 100 MX2
+100000000000000000000
+✨  Done in 14.33s.
 ```

@@ -6,11 +6,16 @@
   "author": "Ming-der Wang",
   "license": "MIT",
   "scripts": {
-    "prepare": "yarn link && yarn chain",
-    "link": "npx oz link @openzeppelin/contracts-ethereum-package",
+    "init": "npx oz init",
+    "prepare": "npx oz link @openzeppelin/contracts-ethereum-package",
     "chain": "npx ganache-cli --deterministic",
     "deploy": "npx oz deploy",
-    "accounts": "npx oz accounts"
+    "accounts": "npx oz accounts",
+    "read": "npx oz call",
+    "write": "npx oz send-tx",
+    "balance": "npx oz balance",
+    "send": "npx oz transfer",
+    "balance:erc20": "npx oz balance --erc20"
   },
   "devDependencies": {
     "@openzeppelin/cli": "^2.8.2",
