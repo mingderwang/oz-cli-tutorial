@@ -18,6 +18,9 @@ Project initialized. Write a new contract in the contracts folder and run 'openz
 yarn run v1.22.15
 $ npx oz link @openzeppelin/contracts-ethereum-package
 ⠦ Installing @openzeppelin/contracts-ethereum-package via npm
+✓ Dependency @openzeppelin/contracts-ethereum-package installed
+Dependency linked to the project. Run 'openzeppelin deploy' to deploy one of its contracts.
+✨  Done in 5.11s.
 ```
 
 ### for localhost
