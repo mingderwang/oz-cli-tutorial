@@ -1,7 +1,7 @@
 {
   "name": "oz-tutorial",
   "description": "Tutorial for using openzeppelin cli.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Ming-der Wang",
   "license": "MIT",
   "scripts": {
@@ -9,6 +9,7 @@
     "prepare": "npx oz link @openzeppelin/contracts-ethereum-package",
     "chain": "npx ganache-cli --deterministic",
     "deploy": "npx oz deploy",
+    "new": "npx oz create",
     "accounts": "npx oz accounts",
     "read": "npx oz call",
     "write": "npx oz send-tx",

@@ -1,0 +1,26 @@
+{
+  "contracts": {},
+  "solidityLibs": {},
+  "proxies": {
+    "@openzeppelin/contracts-ethereum-package/ERC20PresetMinterPauserUpgradeSafe": [
+      {
+        "address": "0xd6B3Ed589AE26F3a0d4DDFE8ec2368d8A6A9Cc54",
+        "version": "3.0.0",
+        "implementation": "0xb1938665526857e08E488E6713B8Bdf8D15e8928",
+        "admin": "0xD1FB9def4EE114B01856CE0d72c813F9B6999805",
+        "kind": "Upgradeable"
+      }
+    ]
+  },
+  "manifestVersion": "2.2",
+  "version": "1.0.1",
+  "dependencies": {
+    "@openzeppelin/contracts-ethereum-package": {
+      "package": "0x2a9e7B63514438906A83a1e320dBBD814D417002",
+      "version": "3.0.0"
+    }
+  },
+  "proxyAdmin": {
+    "address": "0xD1FB9def4EE114B01856CE0d72c813F9B6999805"
+  }
+}

@@ -257,3 +257,34 @@ Balance: 100 MX2
 100000000000000000000
 ✨  Done in 14.33s.
 ```
+
+### create more new instances
+
+> after first deployment, you can create another instance with the same contract as follows;
+
+```sh
+➜ yarn new
+yarn run v1.22.15
+$ npx oz create
+The create command is deprecated. Use deploy instead.
+No contracts found to compile.
+? Pick a contract to instantiate @openzeppelin/contracts-ethereum-packa
+ge/ERC20PresetMinterPauserUpgradeSafe
+? Pick a network ropsten
+✓ Linked dependency @openzeppelin/contracts-ethereum-package 3.0.0
+All implementations are up to date
+? Call a function to initialize the instance after creating it? Yes
+? Select which function initialize(name: string, symbol: string)
+? name: string: MING X token
+? symbol: string: MX1
+✓ Setting everything up to create contract instances
+⠹ Creating instance for contract at 0xb1938665526857e08E488E6713B8Bdf8
+D15e8928 and calling 'initialize' with:
+- name (string): "MING X token"
+- symbol (string): "MX1"
+✓ Setting everything up to create contract instances
+✓ Instance created at 0xd6B3Ed589AE26F3a0d4DDFE8ec2368d8A6A9Cc54
+To upgrade this instance run 'oz upgrade'
+0xd6B3Ed589AE26F3a0d4DDFE8ec2368d8A6A9Cc54
+✨  Done in 546.26s.
+```
