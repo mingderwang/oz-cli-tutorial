@@ -4,6 +4,12 @@
   "main": "index.js",
   "author": "Ming-der Wang",
   "license": "MIT",
+  "scripts": {
+    "prepare": "yarn link && yarn chain",
+    "link": "npx oz link @openzeppelin/contracts-ethereum-package",
+    "chain": "npx ganache-cli --deterministic &",
+    "accounts": "npx oz accounts"
+  },
   "dependencies": {
     "@openzeppelin/cli": "^2.8.2",
     "@openzeppelin/contracts-ethereum-package": "^3.0.0"
