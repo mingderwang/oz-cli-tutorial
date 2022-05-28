@@ -1,0 +1,15 @@
+{
+  "name": "token-factory",
+  "version": "1.0.1",
+  "main": "index.js",
+  "author": "Ming-der Wang",
+  "license": "MIT",
+  "dependencies": {
+    "@openzeppelin/cli": "^2.8.2",
+    "@openzeppelin/contracts-ethereum-package": "^3.0.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.1",
+    "truffle-hdwallet-provider": "^1.0.17"
+  }
+}
