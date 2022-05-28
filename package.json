@@ -1,7 +1,7 @@
 {
   "name": "oz-tutorial",
   "description": "Tutorial for using openzeppelin cli.",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "Ming-der Wang",
   "license": "MIT",
   "scripts": {
